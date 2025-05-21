@@ -15,7 +15,6 @@ This Fitness Tracker application helps users log their daily workouts by enterin
 
 2.5 Repeat the process to track multiple workout sessions.
 
-2.6 No server or backend setup is required as the app runs fully in the browser.
 
 # 3. Dependencies
 
