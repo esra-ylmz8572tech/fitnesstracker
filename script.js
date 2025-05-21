@@ -16,28 +16,28 @@ const workoutChart = new Chart(chartCtx, {
     labels: workoutData.labels,
     datasets: [
       {
-        label: "Duration (min)", // Label for duration dataset
+        label: "Duration (min)",
         data: workoutData.durations,
-        backgroundColor: "rgba(54, 162, 235, 0.6)" // Blue bars
+        backgroundColor: "rgba(54, 162, 235, 0.6)"
       },
       {
-        label: "Calories Burned", // Label for calories dataset
+        label: "Calories Burned",
         data: workoutData.calories,
-        backgroundColor: "rgba(255, 99, 132, 0.6)" // Red bars
+        backgroundColor: "rgba(255, 99, 132, 0.6)"
       }
     ]
   },
   options: {
-    responsive: true, // Make chart responsive
+    responsive: true,
     plugins: {
       title: {
         display: true,
-        text: "Workout Duration & Calories Burned" // Chart title
+        text: "Workout Duration & Calories Burned"
       }
     },
     scales: {
       y: {
-        beginAtZero: true // Y-axis starts from 0
+        beginAtZero: true
       }
     }
   }
@@ -45,9 +45,8 @@ const workoutChart = new Chart(chartCtx, {
 
 // Simple calorie calculation function
 function calculateCalories(type, duration, gender, age) {
-  let metValue = 6; // Default MET (Metabolic Equivalent Task) value
+  let metValue = 6;
 
-  // Set MET value based on workout type
   switch (type) {
     case "Yoga":
       metValue = 3;
@@ -63,41 +62,34 @@ function calculateCalories(type, duration, gender, age) {
       break;
   }
 
-  // Use average weight based on gender
   const weight = gender === "Male" ? 75 : 65;
-
-  // Calorie formula: (MET * 3.5 * weight / 200) * duration
   const calories = ((metValue * 3.5 * weight) / 200) * duration;
-
-  return Math.round(calories); // Round to nearest whole number
+  return Math.round(calories);
 }
 
 // Handle form submission
 form.addEventListener("submit", function (e) {
-  e.preventDefault(); // Prevent page reload
+  e.preventDefault();
 
-  // Get user input values
   const type = document.getElementById("type").value;
   const duration = parseInt(document.getElementById("duration").value);
   const gender = document.getElementById("gender").value;
   const age = parseInt(document.getElementById("age").value);
 
-  // Calculate calories burned
   const calories = calculateCalories(type, duration, gender, age);
 
-  // Update daily progress display
-  document.getElementById("progress-workout").innerHTML = Workout Type: <strong>${type}</strong>;
-  document.getElementById("progress-duration").innerHTML = Duration: <strong>${duration} minutes</strong>;
-  document.getElementById("progress-gender").innerHTML = Gender: <strong>${gender}</strong>;
-  document.getElementById("progress-age").innerHTML = Age: <strong>${age}</strong>;
-  document.getElementById("progress-calories").innerHTML = Calories Burned: <strong>${calories}</strong>;
+  // ✅ Correctly use template literals with backticks (``)
+  document.getElementById("progress-workout").innerHTML = `Workout Type: <strong>${type}</strong>`;
+  document.getElementById("progress-duration").innerHTML = `Duration: <strong>${duration} minutes</strong>`;
+  document.getElementById("progress-gender").innerHTML = `Gender: <strong>${gender}</strong>`;
+  document.getElementById("progress-age").innerHTML = `Age: <strong>${age}</strong>`;
+  document.getElementById("progress-calories").innerHTML = `Calories Burned: <strong>${calories}</strong>`;
 
-  // Add new data to the chart
+  // Update chart data
   workoutData.labels.push(type);
   workoutData.durations.push(duration);
   workoutData.calories.push(calories);
-  workoutChart.update(); // Refresh the chart
+  workoutChart.update();
 
-  // Reset the form fields
   form.reset();
 });
