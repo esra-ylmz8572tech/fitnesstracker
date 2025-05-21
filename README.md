@@ -18,7 +18,7 @@ This Fitness Tracker application helps users log their daily workouts by enterin
 
 # 3. Dependencies
 
-Chart.js — a JavaScript library for rendering responsive and interactive charts.
+Chart.js : A JavaScript library for rendering responsive and interactive charts.
 Included via CDN in the HTML file to visualize workout data.
 
 # 4. Description of Key Functions or Features
