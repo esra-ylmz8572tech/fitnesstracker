@@ -24,7 +24,7 @@ Included via CDN in the HTML file to visualize workout data.
 
 # 4. Description of Key Functions or Features
 
-4.1 calculateCalories(type, duration, gender, age)
+# 4.1 calculateCalories(type, duration, gender, age)
 Estimates calories burned using MET values for different exercise types:
 
 Yoga: MET = 3
@@ -43,7 +43,9 @@ Calculation formula:
 
 Calories = ((MET *3.5*weight)/200)*duration
 
- 4.2 Form Submission Handler
+
+# 4.2 Form Submission Handler
+
 Listens for form submission event and prevents page reload.
 
 Extracts form input values.
@@ -56,7 +58,9 @@ Updates the bar chart to add new data points for duration and calories burned.
 
 Resets the form for new entries.
 
-4.3 Chart.js Integration
+
+# 4.3 Chart.js Integration
+
 Displays two datasets on a bar chart:
 
 Workout duration in minutes.
